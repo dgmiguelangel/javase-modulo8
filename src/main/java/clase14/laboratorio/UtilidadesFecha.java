@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 
 public class UtilidadesFecha {
@@ -16,7 +17,7 @@ public class UtilidadesFecha {
 		return fecha.format(dtf);
 	}
 
-	static LocalDate getStringAsLocalDate(String fecha) throws ParseException {
+	static LocalDate getStringAsLocalDate(String fecha) throws ParseException, DateTimeParseException {
 		return LocalDate.parse(fecha, dtf);
 	}
 	

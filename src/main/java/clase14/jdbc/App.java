@@ -15,8 +15,38 @@ public class App {
 
 //		insertar();
 
-		consultar();
+//		consultar();
 
+//		actualizar();
+		
+		eliminar();
+
+	}
+
+	private static void eliminar() {
+
+		String sql = "delete from compacto where id = 1";
+
+		try (Connection con = conectarBD(); Statement st = con.createStatement();) {
+
+			st.execute(sql);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void actualizar() {
+
+		String sql = "update compacto set activa = 0 where id = 1";
+
+		try (Connection con = conectarBD(); Statement st = con.createStatement();) {
+
+			st.execute(sql);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static void consultar() {
@@ -26,8 +56,8 @@ public class App {
 		try (Connection con = conectarBD(); Statement st = con.createStatement();) {
 
 			ResultSet rs = st.executeQuery(sql);
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				System.out.println(rs.getString(2));
 				System.out.println(rs.getBoolean("activa"));
 				System.out.println(rs.getString("color"));
@@ -36,12 +66,11 @@ public class App {
 				System.out.println(rs.getInt("puestos"));
 				System.out.println("---------------------------");
 			}
-			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
-		
+		}
+
 	}
 
 	private static void insertar() {

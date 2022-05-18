@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -222,8 +223,6 @@ public class App {
 					+ Date.valueOf(persona.getFechaCargo()) + "', " + persona.getSueldo() + ", '" + persona.getCarrera()
 					+ "')";
 
-			System.out.println(sql);
-
 			st.execute(sql);
 
 		} catch (SQLException e) {
@@ -258,6 +257,9 @@ public class App {
 				break;
 
 			} catch (ParseException e) {
+				System.err.println("debe ingresar un dato valido: " + e.getMessage());
+			
+			} catch (DateTimeParseException e) {
 				System.err.println("debe ingresar un dato valido: " + e.getMessage());
 			}
 
